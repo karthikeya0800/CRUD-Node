@@ -24,6 +24,7 @@ services:
       - MONGO_URL=mongodb://mongo:27017/crud
       # - NODE_ENV=production
       - NODE_ENV=development
+      - PORT=3000
 
   frontend:
     image: karthikeya2100/crud-react:latest
