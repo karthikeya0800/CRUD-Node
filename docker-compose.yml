@@ -12,7 +12,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: node-app
+    container_name: crud-node
     ports:
       - '3000:3000'
     depends_on:
@@ -20,6 +20,10 @@ services:
     volumes:
       - ./backend:/app/backend
       - /app/backend/node_modules
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/crud
+      # - NODE_ENV=production
+      - NODE_ENV=development
 
   frontend:
     image: karthikeya2100/crud-react:latest

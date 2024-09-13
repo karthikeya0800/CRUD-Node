@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 const cors = require("cors");
 const itemRoutes = require("./Routes/ItemRoutes");
+require("dotenv").config();
 
 const app = express();
 
@@ -13,7 +14,7 @@ app.use(cors());
 // MongoDB connection
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect("mongodb://mongo:27017/crud");
+    const conn = await mongoose.connect(process.env.MONGO_URL);
     console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
     console.error(`Error: ${error.message}`);
