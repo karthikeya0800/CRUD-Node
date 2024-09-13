@@ -18,4 +18,4 @@ COPY . .
 EXPOSE 3000
 
 # Start the app
-CMD ["node", "routes.js"]
+CMD ["node", "server.js"]
