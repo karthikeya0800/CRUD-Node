@@ -1,7 +1,7 @@
 # Pull the repository
 
 ```
-https://github.com/karthikeya0800/CRUD-Node.git
+git clone https://github.com/karthikeya0800/CRUD-Node.git
 ```
 
 To run the application, cd to CRUD-Node and use the following command:

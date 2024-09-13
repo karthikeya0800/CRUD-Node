@@ -1,2 +1,5 @@
 node_modules
 clear-all.sh
+package-lock.json
+.env
+dist
