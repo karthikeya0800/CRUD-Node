@@ -31,12 +31,12 @@ services:
     container_name: crud-react
     environment:
       - API_URL=http://localhost:3000
-      - PORT=5001
-      - BACKEND_FRAMEWORK=Express.js
+      # - API_URL=http://35.203.157.130:3000
+      - BACKEND_FRAMEWORK=Express.js and MongoDB
     ports:
-      - '5000:5001'
-    depends_on:
-      - backend
+      - '5173:5173'
+    volumes:
+      - ./frontend:/app/dist
 
 volumes:
   mongo-data:

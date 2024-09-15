@@ -2,14 +2,14 @@
 FROM node:18-alpine
 
 # Set the working directory
-WORKDIR /app/backend
+WORKDIR /app
 
 # Copy the package.json and package-lock.json files for backend
 COPY package.json .
 
 # Install backend dependencies
 RUN npm install
-# RUN npm install -g nodemon
+RUN npm install -g pm2
 
 # Copy backend application code
 COPY . .
@@ -18,4 +18,4 @@ COPY . .
 EXPOSE 3000
 
 # Start the app
-CMD ["node", "server.js"]
+CMD ["pm2-runtime", "start", "server.js"]

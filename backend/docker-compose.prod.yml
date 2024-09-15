@@ -1,0 +1,41 @@
+version: '3'
+services:
+  mongo:
+    image: mongo:8.0.0-rc16-jammy
+    container_name: mongodb-prod
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: crud-node-prod
+    ports:
+      - '3000:3000'
+    depends_on:
+      - mongo
+    # volumes:
+    #   - ./backend:/app/backend
+    #   - /app/backend/node_modules
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/crud
+      - NODE_ENV=production
+      # - NODE_ENV=development
+      - PORT=3000
+
+  # frontend:
+  #   image: karthikeya2100/crud-react:latest
+  #   container_name: crud-react
+  #   environment:
+  #     - API_URL=http://35.203.157.130:3000
+  #     - BACKEND_FRAMEWORK=Express.js and MongoDB
+  #   ports:
+  #     - '80:5173'
+  #   volumes:
+  #     - ./frontend:/app/dist
+
+volumes:
+  mongo-data:
