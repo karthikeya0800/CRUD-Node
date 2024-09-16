@@ -29,9 +29,13 @@ echo -e "\e[32mCopied nginx config to /tmp\e[0m"
 try_command ssh -i ~/.ssh/id_ed25519 karthikeya@35.203.157.130 "sudo mv -f /tmp/nginx.config /etc/nginx/sites-available/default"
 echo -e "\e[32mMoved nginx config to /etc/nginx/sites-available/default, replacing existing file if it exists\e[0m"
 
+#Delete existing docker images, containers, volumes and networks
+try_command ssh -i ~/.ssh/id_ed25519 karthikeya@35.203.157.130 "sh docker-clear.sh"
+echo -e "\e[32mDocker Cleared\e[0m"
+
 #Run Docker compose
 try_command ssh -i ~/.ssh/id_ed25519 karthikeya@35.203.157.130 "cd CRUD-Node && docker compose -f docker-compose.prod.yml up -d"
-echo -e "\e[32mStarted docker compose\e[0m"
+echo -e "\e[32mDocker Images, Containers and Volumes created successfully\e[0m"
 
 #Restart nginx
 try_command ssh -i ~/.ssh/id_ed25519 karthikeya@35.203.157.130 "sudo systemctl restart nginx"
