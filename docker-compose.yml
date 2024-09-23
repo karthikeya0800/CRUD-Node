@@ -25,14 +25,17 @@ services:
       - NODE_ENV=production
       # - NODE_ENV=development
       - PORT=3000
+      - TITLE=CRUD-Node
 
   frontend:
     image: karthikeya2100/crud-react:latest
     container_name: crud-react
     environment:
-      # - API_URL=http://localhost:3000
-      - API_URL=https://crud-app.run.place/node
+      - API_URL=http://localhost:3000
+      # - API_URL=https://crud-app.run.place/node
       - BACKEND_FRAMEWORK=Express.js and MongoDB
+      - TITLE=CRUD-Node
+      - GITHUB_LINK=https://github.com/karthikeya0800/CRUD-Node
     ports:
       - '5173:5173'
     volumes:

@@ -1,4 +1,5 @@
 # sudo kill $(sudo lsof -t -i:27017)
+sudo sh kill-port.sh 27017
 docker rm $(docker ps -a -q) -f > /dev/null 2>&1
 docker rmi $(docker images -q) > /dev/null 2>&1
 docker volume rm $(docker volume ls) > /dev/null 2>&1
